@@ -1,6 +1,6 @@
 # Chrome接口导出器
 
-在 DevTools 里捕获接口请求，一键导出成**干净的接口 JSON**，文件名就是接口名（`getUserProfile.json`）。
+在 DevTools 里捕获接口请求，一键导出成**干净的接口 JSON**，文件名就是接口名（格式为：`getUserProfile.json`）。
 
 ## 功能
 - 在 Chrome DevTools 中监听网络请求，请求完成后立即进入列表，响应正文异步补充（`getContent` 慢或失败都不影响列表）。
