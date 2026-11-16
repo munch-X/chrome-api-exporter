@@ -14,7 +14,7 @@
 - 底栏**「诊断」按钮**：一键查看 `chrome.downloads` / `showSaveFilePicker` / 后台 worker 是否可用，以及上次导出走的通道和每一级失败原因，可复制。
 
 ## 安装（开发者模式）
-1. 解压 ZIP 到固定目录（安装后不要移动或删除该目录）。
+1. 快捷操作从code里直接下载 ZIP包，然后解压 ZIP 到固定目录（安装后不要移动或删除该目录）。
 2. Chrome 地址栏打开 `chrome://extensions/`。
 3. 打开右上角「开发者模式」。
 4. 点「加载已解压的扩展程序」，选择解压后的 `chrome-api-exporter-v1.0.0` 文件夹。
