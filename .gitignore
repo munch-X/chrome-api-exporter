@@ -7,7 +7,6 @@ shot_*.png
 _*.mjs
 
 # 本机工具产物
-.workbuddy/
 .DS_Store
 Thumbs.db
 
