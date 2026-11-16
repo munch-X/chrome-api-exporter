@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chrome接口导出器</title>
+<link rel="stylesheet" href="panel.css">
+</head>
+<body>
+<header class="app-head">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">
+      <img src="icons/icon-32.png" alt="">
+    </span>
+    <div class="brand-text">
+      <h1>Chrome接口导出器</h1>
+      <p>捕获 DevTools 网络请求，导出为 <code>接口名.json</code></p>
+    </div>
+  </div>
+  <div class="toolbar">
+    <button id="refresh" class="btn" title="回读 Network 面板中已有的请求">
+      <svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 6.3"/><path d="M20 5v6h-6"/></svg>
+      刷新请求
+    </button>
+    <button id="clear" class="btn ghost" title="清空列表并继续捕获">
+      <svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M9 7V5h6v2"/><path d="M6 7l1 13h10l1-13"/></svg>
+      清空列表
+    </button>
+  </div>
+</header>
+
+<section class="bar">
+  <div class="stats">
+    <span class="stat"><span class="k">请求总数</span><b id="total">0</b></span>
+    <span class="stat"><span class="k">已选择</span><b id="selected" class="accent">0</b></span>
+    <span id="status" class="status"></span>
+  </div>
+  <div class="controls">
+    <label class="mini" title="只捕获接口请求，过滤图片 / 样式 / 脚本等静态资源">
+      <select id="typeFilter">
+        <option value="xhr" selected>仅 xhr</option>
+        <option value="api">fetch + xhr</option>
+        <option value="all">全部类型</option>
+      </select>
+    </label>
+    <label class="mini tick" title="勾选当前过滤结果中的全部请求">
+      <input type="checkbox" id="selectAll"><span>全选</span>
+    </label>
+    <div class="search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>
+      <input id="filter" placeholder="过滤 URL / 方法 / 状态码">
+    </div>
+  </div>
+</section>
+
+<main>
+  <table>
+    <colgroup>
+      <col class="c-check"><col class="c-method"><col class="c-status">
+      <col class="c-type"><col><col class="c-time">
+    </colgroup>
+    <thead>
+      <tr><th class="check"></th><th>方法</th><th>状态</th><th>类型</th><th>URL</th><th class="ta-r">耗时</th></tr>
+    </thead>
+    <tbody id="requests">
+      <tr><td colspan="6" class="empty">等待接口请求……</td></tr>
+    </tbody>
+  </table>
+</main>
+
+<section id="diagPanel" class="diag" hidden>
+  <div class="diag-head">
+    <b>下载诊断</b>
+    <span id="diagState" class="diag-state"></span>
+    <button id="diagCopy" class="btn ghost">复制</button>
+    <button id="diagClose" class="btn ghost">关闭</button>
+  </div>
+  <div id="diagText" class="diag-body"></div>
+</section>
+
+<footer>
+  <div class="actions">
+    <button id="diagBtn" class="btn ghost" title="查看下载通道状态与上次导出结果">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v5"/><path d="M12 16.5v.01"/></svg>
+      诊断
+    </button>
+    <button id="exportSelected" class="btn">
+      <svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="m8 11 4 4 4-4"/><path d="M5 20h14"/></svg>
+      导出选中
+    </button>
+    <button id="exportAll" class="btn primary">
+      <svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="m8 11 4 4 4-4"/><path d="M5 20h14"/></svg>
+      导出全部
+    </button>
+  </div>
+</footer>
+<div id="ctxMenu" class="ctx-menu" hidden></div>
+<script src="panel.js"></script>
+</body>
+</html>

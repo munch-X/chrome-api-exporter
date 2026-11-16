@@ -1,0 +1,1 @@
+chrome.devtools.panels.create("Chrome接口导出器", "icons/icon-16.png", "panel.html");
